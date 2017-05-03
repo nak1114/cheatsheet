@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# -*- encoding: utf-8 -*-
 
 require 'nokogiri'
 require "rexml/document"
@@ -11,7 +12,7 @@ root = doc.at_css('.menu-root')
 root.css('li:last-child').last.remove # remove the last two li
 root.css('li:last-child').last.remove
 
-extras = IO.read(__dir__ + '/extras.xml') # extra panels
+extras = File.open(__dir__ + '/extras.xml',"r:utf-8",&:read) # extra panels
 
 html = root.to_s
 html = html.gsub(/<\/li>\s+<ul/m, "\n<ul") # remove closing li
@@ -31,11 +32,11 @@ doc = Nokogiri::HTML html
 doc.at_css('.menu-root > li:nth-child(13)').add_next_sibling("
 <li class='directives hooks'><a>Directives <small>Hooks</small></a>
   <ul>
-    <li><a href='https://vuejs.org/v2/guide/custom-directive.html#Hook-Functions'>bind</a></li>
-    <li><a href='https://vuejs.org/v2/guide/custom-directive.html#Hook-Functions'>inserted</a></li>
-    <li><a href='https://vuejs.org/v2/guide/custom-directive.html#Hook-Functions'>update</a></li>
-    <li><a href='https://vuejs.org/v2/guide/custom-directive.html#Hook-Functions'>componentUpdated</a></li>
-    <li><a href='https://vuejs.org/v2/guide/custom-directive.html#Hook-Functions'>unbind</a></li>
+    <li><a href='https://jp.vuejs.org/v2/guide/custom-directive.html#フック関数'>bind</a></li>
+    <li><a href='https://jp.vuejs.org/v2/guide/custom-directive.html#フック関数'>inserted</a></li>
+    <li><a href='https://jp.vuejs.org/v2/guide/custom-directive.html#フック関数'>update</a></li>
+    <li><a href='https://jp.vuejs.org/v2/guide/custom-directive.html#フック関数'>componentUpdated</a></li>
+    <li><a href='https://jp.vuejs.org/v2/guide/custom-directive.html#フック関数'>unbind</a></li>
   </ul>
 </li>
 ")
