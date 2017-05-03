@@ -25,7 +25,7 @@ ready(function () {
     if (href = evt.target.getAttribute('href')) {
       evt.preventDefault()
       if (href.charAt(0) === '#') {
-        href = 'https://vuejs.org/v2/api/' + href
+        href = 'https://jp.vuejs.org/v2/api/' + href
       }
       $('#iframe').src = href
       $('#modal').classList.remove('hidden')
